@@ -1,10 +1,12 @@
 from flask import Flask, request
-import json
+from flask_httpauth import HTTPTokenAuth
 from flask_restful import Resource, Api
 from mysql import MySQL
 
 app = Flask(__name__)
 api = Api(app)
+auth = HTTPTokenAuth()
+
 
 class Students(Resource):
     mysql = MySQL()
@@ -60,6 +62,7 @@ class Students(Resource):
 
         result = self.mysql.delete_student(int(id))
         return {'error': False, 'message': f'Aluno de matrícula {id} foi deletado'}
+ 
 
 api.add_resource(Students, '/students')
 
