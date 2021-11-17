@@ -64,7 +64,7 @@ class Students(Resource):
         return {'error': False, 'message': f'Aluno de matrícula {id} foi deletado'}
  
 
-api.add_resource(Students, '/students')
+api.add_resource(Students, '/api/students')
 
 if __name__ == '__main__':
     app.run(debug=True)
